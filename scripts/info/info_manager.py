@@ -13,49 +13,32 @@ def log_printer(func):
 
 class infoManager:
     def __init__(self):
-        # flag to check if can running inline
-        self.is_running_inline = False
-        # flag to check if is stopping
-        self.is_running_outsidestop = True
-        # flag to check if can running
-        self.is_running = False
         # speed and angular control
         self.twist = Twist()
         # run mileage
         self.mileage = 0
-        # passenger num
-        self.passenger_num = 0
-        # passenger capicity
-        self.capicity = config.CAPICITY
-
-    def set_is_running_inline(self, val):
-        self.is_running_inline = val
-        self.set_is_running(
-            self.is_running_inline and self.is_running_outsidestop)
-
-    def get_is_running_inline(self):
-        return self.is_running_inline
-
-    def set_is_running_outsidestop(self, val):
-        self.is_running_outsidestop = val
-        self.set_is_running(
-            self.is_running_inline and self.is_running_outsidestop)
-
-    def get_is_running_outsidestop(self):
-        return self.is_running_outsidestop
-
-    @log_printer
-    def set_is_running(self, val):
-        self.is_running = val
-
-    def get_is_running(self):
-        return self.is_running
 
     def get_linear_x(self):
         return self.twist.linear.x
 
     def set_linear_x(self, val):
         self.twist.linear.x = val
+        
+    def add_linear_x(self):
+        if self.twist.linear.x < config.MAX_SPEED:
+            self.twist.linear.x += config.SPEED_STEP
+    
+    def sub_linear_x(self):
+        if self.twist.linear.x > 0:
+            self.twist.linear.x -= config.SPEED_STEP
+            
+    def add_angular_z(self):
+        if self.twist.angular.z < config.MAX_ANGULAR:
+            self.twist.angular.z += config.ANGULAR_STEP
+            
+    def sub_angular_z(self):
+        if self.twist.angular.z > -config.MAX_ANGULAR:
+            self.twist.angular.z -= config.ANGULAR_STEP
 
     def get_angular_z(self):
         return self.twist.angular.z
@@ -76,16 +59,8 @@ class infoManager:
     def set_mileage(self, val):
         self.mileage = val
 
-    def get_passenger_num(self):
-        return self.passenger_num
-
-    @log_printer
-    def set_passenger_num(self, val):
-        self.passenger_num = val
-
     def get_all(self):
-        data = [{'mileage': self.mileage, 'speed': self.twist.linear.x,
-                 'passenger_num': self.passenger_num}]
+        data = [{'mileage': self.mileage, 'speed': self.twist.linear.x, 'direct': self.twist.angular.z}]
 
     def stop(self):
         self.twist = Twist()

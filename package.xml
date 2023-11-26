@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>car_code</name>
+  <name>IOT</name>
   <version>0.0.0</version>
   <description>Makes a mobile robot follow a target. either using rgb-d or laser range finder</description>
 

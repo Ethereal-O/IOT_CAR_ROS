@@ -1,10 +1,10 @@
 <launch>
   <!-- 开启RGB摄像头  -->
-  <include file="$(find turn_on_wheeltec_robot)/launch/wheeltec_camera.launch">
+  <!-- <include file="$(find turn_on_wheeltec_robot)/launch/wheeltec_camera.launch">
     <arg name="if_usb_cam" value="true"/>
-  </include>  
+  </include>   -->
   <!-- 开启巡线节点  -->
-  <node pkg="car_code" type="car.py" name="line_tracker"  output="screen">
+  <node pkg="IOT" type="car.py" name="line_tracker"  output="screen">
     <remap from="line_tracker/cmd_vel" to="/cmd_vel"/>
   </node>
   <!-- <node pkg="simple_follower" type="avoidance" name="avoidance" /> -->
