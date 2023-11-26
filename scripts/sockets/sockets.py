@@ -20,25 +20,28 @@ class sockets:
         self.iot_client.set_command_callback(self.recv_msg)
         self.running = True
         self.iot_client.start()
-    #     threading.Thread(target=self.report).start()
-
-    # def report(self):
-    #     while True:
-    #         if not (self.running):
-    #             continue
-    #         self.send_message(info_manager.get_all())
-    #         time.sleep(config.SLEEP_TIME)
+    
+    def parse_command(self, command):
+        print(('Command, device id:  ', command.device_id))
+        print(('Command, service id: ', command.service_id))
+        print(('Command, command name: ', command.command_name))
+        real_command = None
+        if config.COMMAND_KEY in command.paras
+            real_command = command.paras[config.COMMAND_KEY]
+        if real_command == "w":
+            info_manager.add_linear_x()
+        elif real_command == "s":
+            info_manager.sub_linear_x()
+        elif real_command == "a":
+            info_manager.sub_angular_z()
+        elif real_command == "d":
+            info_manager.add_angular_z()
+        elif:
+            print("unknown command paras: ", command.paras)
 
     def recv_msg(self, request_id, command):
-        # while self.running:
-        #     recv_data = self.fd.readline()
-        #     info_manager.set_linear_x(float(recv_data) / config.SPEED_SCALE)
-        print(('Command, device id:  ', command.device_id))
-        print(('Command, service id = ', command.service_id))
-        print(('Command, command name: ', command.command_name))
-        print(('Command. paras: ', command.paras))
+        self.parse_command(command)
         self.iot_client.respond_command(request_id, result_code=0)
-        print('------------------this is myself callback')
 
     def send_message(self, message):
         self.fd.write(str(message) + config.END_FLAG)
