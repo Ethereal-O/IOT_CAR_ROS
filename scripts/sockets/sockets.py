@@ -26,17 +26,13 @@ class sockets:
         print(('Command, service id: ', command.service_id))
         print(('Command, command name: ', command.command_name))
         real_command = None
-        if config.COMMAND_KEY in command.paras
+        if config.COMMAND_KEY in command.paras:
             real_command = command.paras[config.COMMAND_KEY]
-        if real_command == "w":
-            info_manager.add_linear_x()
-        elif real_command == "s":
-            info_manager.sub_linear_x()
-        elif real_command == "a":
-            info_manager.sub_angular_z()
-        elif real_command == "d":
-            info_manager.add_angular_z()
-        elif:
+        if real_command == "1":
+            info_manager.set_linear_x(0.15)
+        elif real_command == "0":
+            info_manager.set_linear_x(0)
+        else:
             print("unknown command paras: ", command.paras)
 
     def recv_msg(self, request_id, command):

@@ -21,6 +21,7 @@ class infoManager:
     def get_linear_x(self):
         return self.twist.linear.x
 
+    @log_printer
     def set_linear_x(self, val):
         self.twist.linear.x = val
         
@@ -55,7 +56,6 @@ class infoManager:
     def get_mileage(self):
         return self.mileage
 
-    # @log_printer
     def set_mileage(self, val):
         self.mileage = val
 
