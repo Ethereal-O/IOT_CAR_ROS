@@ -1,0 +1,79 @@
+.login-form {
+    max-width: 500px;
+}
+.login-form-forgot {
+    float: right;
+}
+.login-form-button {
+    width: 100%;
+    background:rgb(0, 127, 191, 70%);
+    color:white;
+    border-radius: 5px;
+    border-color: rgb(0, 127, 191);
+}
+
+.login-page {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/bg.png");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    z-index: 99;
+}
+
+
+.login-container {
+    position:relative;
+    width: 500px;
+    height: 400px;
+    margin: 40px auto 0;
+    border-radius: 30px;
+}
+
+.register-container{
+    position:relative;
+    width: 750px;
+    height: 600px;
+    margin: 40px auto 0;
+    border-radius: 30px;
+    padding: 40px 40px 15px 40px;
+    backface-visibility: hidden;
+    /*background: linear-gradient(30deg, rgba(53, 57, 74, 0) 0%, rgb(255, 255, 255) 100%);*/
+    background-color: rgba(0,0,0,0.5);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(53, 57, 74, 0)', endColorstr='rgb(0, 0, 0)',GradientType=1 );
+    box-shadow: -15px 15px 15px rgba(0,0,0,.4);
+}
+
+.login-page .login-container .login-box {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 15px 40px;
+    backface-visibility: hidden;
+    /*background: linear-gradient(30deg, rgba(53, 57, 74, 0) 0%, rgb(255, 255, 255) 100%);*/
+    background-color:rgba(255,255,255,0.5);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(53, 57, 74, 0)', endColorstr='rgb(0, 0, 0)',GradientType=1 );
+    box-shadow: -15px 15px 15px rgba(0,0,0,.4);
+}
+
+
+.page-title{
+    font-size: 40px;
+    color:white;
+    text-align: center;
+}
+
+.login-button{
+    background:rgb(0, 0, 191, 80%);
+    color:white;
+    border-radius: 5px;
+    border-color: rgb(0, 0, 191);
+}
