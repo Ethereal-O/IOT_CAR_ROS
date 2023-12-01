@@ -22,16 +22,20 @@ class sockets:
         self.iot_client.start()
     
     def parse_command(self, command):
-        print(('Command, device id:  ', command.device_id))
-        print(('Command, service id: ', command.service_id))
-        print(('Command, command name: ', command.command_name))
+        # print(('Command, device id:  ', command.device_id))
+        # print(('Command, service id: ', command.service_id))
+        # print(('Command, command name: ', command.command_name))
         real_command = None
         if config.COMMAND_KEY in command.paras:
             real_command = command.paras[config.COMMAND_KEY]
-        if real_command == "1":
-            info_manager.set_linear_x(0.15)
-        elif real_command == "0":
-            info_manager.set_linear_x(0)
+        if real_command == "0":
+            info_manager.add_linear_x()
+        elif real_command == "1":
+            info_manager.sub_linear_x()
+        elif real_command == "2":
+            info_manager.add_angular_z()
+        elif real_command == "3":
+            info_manager.sub_angular_z()
         else:
             print("unknown command paras: ", command.paras)
 
